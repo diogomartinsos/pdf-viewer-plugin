@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  id="pdf-viewer"
+  version="1.0.0">
+  <name>Cordova Plugin Template</name>
+  <description></description>
+  <license>MIT</license>
+  <keywords></keywords>
+  <repo>https://github.com/driftyco/cordova-plugin-template.git</repo>
+  <issue>https://github.com/driftyco/cordova-plugin-template/issues</issue>
+
+
+  <js-module src="www/pdf-viewer.js" name="PDF Viewer"> <!-- src = path js  name = que
+    mostra quando se instala -->
+    <clobbers target="cordova.plugins.PDFViewer" /> <!--Como
+    se encontra o plugin na window do browser-->
+  </js-module>
+
+  <!-- android -->
+  <platform name="android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <config-file target="res/xml/config.xml" parent="/*">
+      <preference name="GradlePluginKotlinVersion" value="1.6.0" />
+      <preference name="GradlePluginKotlinEnabled" value="true" />
+      <preference name="GradlePluginKotlinCodeStyle" value="official" />
+      <preference name="AndroidXEnabled" value="true" />
+      <feature name="PDFViewer">
+        <param name="android-package" value="com.outsystems.experts.PDFViewer" />
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+
+    <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+    <source-file src="src/android/PDFViewer.kt"
+      target-dir="app/src/main/kotlin/com/outsystems/experts" />
+  </platform>
+
+  <!-- ios
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MyCordovaPlugin">
+                <param name="ios-package" value="MyCordovaPlugin" onload="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/MyCordovaPlugin.h" />
+        <source-file src="src/ios/MyCordovaPlugin.m" />
+    </platform>  -->
+</plugin>
